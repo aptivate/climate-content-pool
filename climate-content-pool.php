@@ -1,8 +1,8 @@
 <?php
 /*
 Plugin Name: Climate Content Pool
-Description: Pushes posts into the Reegle Content Pool
-Version: 0.1
+Description: Pushes posts into the reegle Content Pool
+Version: 1.0.0
 Author: Aptivate
 */
 
@@ -184,7 +184,7 @@ class ClimateContentPool {
 	}
 
 	function render_meta_box_content() {
-		echo '<label for="id_push_to_content_pool">Send to Reegle content pool: <input type="checkbox" id="id_push_to_content_pool" name="push_to_content_pool" checked="checked" /></label>';
+		echo '<label for="id_push_to_content_pool">Send to reegle content pool: <input type="checkbox" id="id_push_to_content_pool" name="push_to_content_pool" checked="checked" /></label>';
 	}
 }
 

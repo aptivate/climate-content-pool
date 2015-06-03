@@ -14,15 +14,15 @@ class ContentPoolTest extends ContentPoolTestBase {
 
 		do_action( 'add_meta_boxes', 'post' );
 
-		$id = $wp_meta_boxes['post']['advanced']['high']['reeep_content_pool']['id'];
-		$title = $wp_meta_boxes['post']['advanced']['high']['reeep_content_pool']['title'];
+		$id = $wp_meta_boxes['post']['advanced']['high']['climate_content_pool']['id'];
+		$title = $wp_meta_boxes['post']['advanced']['high']['climate_content_pool']['title'];
 
 
 		$this->assertThat(
-			$id, $this->equalTo( 'reeep_content_pool' ) );
+			$id, $this->equalTo( 'climate_content_pool' ) );
 
 		$this->assertThat(
-			$title, $this->equalTo( 'Reeep Content Pool' ) );
+			$title, $this->equalTo( 'Climate Content Pool' ) );
 	}
 
 	public function test_meta_box_created_for_resource() {
@@ -36,21 +36,21 @@ class ContentPoolTest extends ContentPoolTestBase {
 
 		do_action( 'add_meta_boxes', 'resource' );
 
-		$id = $wp_meta_boxes['resource']['advanced']['high']['reeep_content_pool']['id'];
-		$title = $wp_meta_boxes['resource']['advanced']['high']['reeep_content_pool']['title'];
+		$id = $wp_meta_boxes['resource']['advanced']['high']['climate_content_pool']['id'];
+		$title = $wp_meta_boxes['resource']['advanced']['high']['climate_content_pool']['title'];
 
 		$this->assertThat(
-			$id, $this->equalTo( 'reeep_content_pool' ) );
+			$id, $this->equalTo( 'climate_content_pool' ) );
 
 		$this->assertThat(
-			$title, $this->equalTo( 'Reeep Content Pool' ) );
+			$title, $this->equalTo( 'Climate Content Pool' ) );
 	}
 
 	public function test_meta_box_not_created_when_filtered() {
 		global $wp_meta_boxes;
 
 		add_filter(
-			'reeep-content-pool-post-is-for-pushing',
+			'climate-content-pool-post-is-for-pushing',
 			'__return_false' );
 
 		do_action( 'add_meta_boxes', 'post' );

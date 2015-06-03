@@ -42,7 +42,7 @@ class PostTest extends ContentPoolTestBase {
 
 		$this->assertThat(
 			(string)$div,
-			$this->equalTo( 'Post successfully sent to REEEP Content Pool' ) );
+			$this->equalTo( 'Post successfully sent to Content Pool' ) );
 	}
 
 	public function test_metadata_for_unsuccessful_push() {
@@ -114,7 +114,7 @@ class PostTest extends ContentPoolTestBase {
 	public function test_no_push_when_filter_returns_false()
 	{
 		add_filter(
-			'reeep-content-pool-post-is-for-pushing',
+			'climate-content-pool-post-is-for-pushing',
 			'__return_false' );
 
 		global $_CONTENT_POOL_MOCK_RESPONSE;

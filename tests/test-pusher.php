@@ -49,7 +49,7 @@ class PusherTest extends ContentPoolTestBase {
 		$pusher = new ContentPoolPusher();
 
 		add_filter(
-			'reeep-content-pool-language',
+			'climate-content-pool-language',
 			array( $this, 'return_spanish' ), 1, 2 );
 
 		$post = $this->get_new_post();
@@ -80,7 +80,7 @@ class PusherTest extends ContentPoolTestBase {
 		$pusher = new ContentPoolPusher();
 
 		add_filter(
-			'reeep-content-pool-internal-only',
+			'climate-content-pool-internal-only',
 			'__return_true' );
 
 		$post = $this->get_new_post();
@@ -111,7 +111,7 @@ class PusherTest extends ContentPoolTestBase {
 		$pusher = new ContentPoolPusher();
 
 		add_filter(
-			'reeep-content-pool-content',
+			'climate-content-pool-content',
 			'strtoupper', 1, 1 );
 
 		$post = $this->get_new_post( array(
@@ -129,7 +129,7 @@ class PusherTest extends ContentPoolTestBase {
 		$pusher = new ContentPoolPusher();
 
 		add_filter(
-			'reeep-content-pool-content',
+			'climate-content-pool-content',
 			array( $this, 'return_error' ), 1, 1 );
 
 		$post = $this->get_new_post();
@@ -189,7 +189,7 @@ class PusherTest extends ContentPoolTestBase {
 
 		$this->assertThat(
 			$pusher->push( $post ),
-			$this->equalTo( 'Failed to retrieve REEEP document id' ) );
+			$this->equalTo( 'Failed to retrieve Content Pool document id' ) );
 	}
 
 	public function test_successful_push() {

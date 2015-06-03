@@ -5,7 +5,7 @@ $_CONTENT_POOL_MOCK_OPTIONS = array();
 
 function mock_get_option( $option, $default = false ) {
 	switch ( $option ) {
-		case 'reeep_content_pool_general_settings':
+		case 'climate_content_pool_general_settings':
 			$defaults = array(
 				'post_types' => 'post',
 				'token' => '',

@@ -1,7 +1,7 @@
 <?php
 /*
-Plugin Name: Reeep Content Pool
-Description: Pushes posts into the REEEP content pool
+Plugin Name: Climate Content Pool
+Description: Pushes posts into the Reegle Content Pool
 Version: 0.1
 Author: Aptivate
 */
@@ -20,10 +20,10 @@ class ClimateContentPool {
 
 	function admin_menu() {
 		add_options_page(
-			'REEEP Content Pool',
-			'REEEP Content Pool',
+			'Climate Content Pool',
+			'Climate Content Pool',
 			'manage_options',
-			'reeep-content-pool',
+			'climate-content-pool',
 			array( 'ClimateContentPool', 'add_options_page_callback' ));
 
 	}
@@ -33,8 +33,8 @@ class ClimateContentPool {
 		self::set_defaults();
 
 		register_setting(
-			'reeep_content_pool_general_settings',
-			'reeep_content_pool_general_settings'
+			'climate_content_pool_general_settings',
+			'climate_content_pool_general_settings'
 		);
 	}
 
@@ -57,7 +57,7 @@ class ClimateContentPool {
 
 	function set_defaults() {
 
-		$options = get_option( 'reeep_content_pool_general_settings' );
+		$options = get_option( 'climate_content_pool_general_settings' );
 
 		$options = wp_parse_args(
 				$options,
@@ -66,22 +66,22 @@ class ClimateContentPool {
 					'post_types' => 'post',
 				) );
 
-		update_option( 'reeep_content_pool_general_settings', $options );
+		update_option( 'climate_content_pool_general_settings', $options );
 
 	}
 
 	function add_options_page_callback() {
 		?>
 		<div class="wrap">
-		<h2>REEEP Content Pool by Aptivate</h2>
+		<h2>Climate Content Pool by Aptivate</h2>
 
 		<div>
 
 		<form method="post" action="options.php">
 
 <?php
-		settings_fields( 'reeep_content_pool_general_settings' );
-		$options = get_option( 'reeep_content_pool_general_settings' );
+		settings_fields( 'climate_content_pool_general_settings' );
+		$options = get_option( 'climate_content_pool_general_settings' );
 
 		?>
 		<h3>General Settings</h3>
@@ -92,7 +92,7 @@ class ClimateContentPool {
 		<td>
 <?php
 		printf(
-			'<input type="text" id="reeep-content-pool-token" name="reeep_content_pool_general_settings[token]" value="%s" size="50" />',
+			'<input type="text" id="climate-content-pool-token" name="climate_content_pool_general_settings[token]" value="%s" size="50" />',
 			esc_attr( $options['token'] )
 		);
 		echo '<br /><span class="description">A valid authentication token that has been generated in the reegle API dashboard. <a href="http://api.reegle.info/register/" target="_blank">http://api.reegle.info/register</a></span>';
@@ -105,7 +105,7 @@ class ClimateContentPool {
 		<td>
 <?php
 		printf(
-			'<input type="text" id="reeep-content-pool-post-types" name="reeep_content_pool_general_settings[post_types]" value="%s" />',
+			'<input type="text" id="climate-content-pool-post-types" name="climate_content_pool_general_settings[post_types]" value="%s" />',
 			esc_attr( $options['post_types'] )
 		);
 		echo '<br /><span class="description">Supported post types, separated by commas.</span>';
@@ -135,7 +135,7 @@ class ClimateContentPool {
 	 */
 	function trigger_content_pool_push( $post_id, $post, $update ) {
 
-		$push_post = apply_filters( 'reeep-content-pool-post-is-for-pushing', true, $post );
+		$push_post = apply_filters( 'climate-content-pool-post-is-for-pushing', true, $post );
 
 		$push_post = $push_post && isset($_POST['push_to_content_pool']);
 		if ( $push_post && $post->post_status == 'publish' &&
@@ -155,18 +155,18 @@ class ClimateContentPool {
 			return "<div class='error'>$error</div>";
 		}
 
-		return "<div class='updated'>Post successfully sent to REEEP Content Pool</div>";
+		return "<div class='updated'>Post successfully sent to Content Pool</div>";
 	}
 
 	public function add_meta_box( $post_type ) {
 		global $post;
 
-		$push_post = apply_filters( 'reeep-content-pool-post-is-for-pushing', true, $post );
+		$push_post = apply_filters( 'climate-content-pool-post-is-for-pushing', true, $post );
 
 		if ( $push_post && $this->is_post_type_supported( $post_type ) ) {
 			add_meta_box(
-				'reeep_content_pool',
-				'Reeep Content Pool',
+				'climate_content_pool',
+				'Climate Content Pool',
 				array( $this, 'render_meta_box_content' ),
 				$post_type,
 				'advanced',
@@ -176,7 +176,7 @@ class ClimateContentPool {
 	}
 
 	private function is_post_type_supported( $post_type ) {
-		$options = get_option( 'reeep_content_pool_general_settings' );
+		$options = get_option( 'climate_content_pool_general_settings' );
 		$post_types = explode( ',', $options['post_types'] );
 		$post_types = array_map( 'trim', $post_types );
 
@@ -184,7 +184,7 @@ class ClimateContentPool {
 	}
 
 	function render_meta_box_content() {
-		echo '<label for="id_push_to_content_pool">Send to REEEP content pool: <input type="checkbox" id="id_push_to_content_pool" name="push_to_content_pool" checked="checked" /></label>';
+		echo '<label for="id_push_to_content_pool">Send to Reegle content pool: <input type="checkbox" id="id_push_to_content_pool" name="push_to_content_pool" checked="checked" /></label>';
 	}
 }
 

@@ -5,7 +5,7 @@ class ContentPoolPusher {
 		$content = $post->post_content;
 
 		$content = apply_filters(
-			'reeep-content-pool-content',
+			'climate-content-pool-content',
 			$content,
 			$post );
 
@@ -16,12 +16,12 @@ class ContentPoolPusher {
 		/* http://api.reegle.info/documentation - Content Pool Push tab*/
 		$url = 'http://api.reegle.info/service/push';
 
-		$options = get_option( 'reeep_content_pool_general_settings' );
+		$options = get_option( 'climate_content_pool_general_settings' );
 
-		$language = apply_filters( 'reeep-content-pool-language', 'en', $post );
+		$language = apply_filters( 'climate-content-pool-language', 'en', $post );
 
 		$internal = apply_filters(
-			'reeep-content-pool-internal-only', false, $post );
+			'climate-content-pool-internal-only', false, $post );
 
 		$fields = array(
 			'title' => $title,
@@ -51,6 +51,6 @@ class ContentPoolPusher {
 			return false;
 		}
 
-		return 'Failed to retrieve REEEP document id';
+		return 'Failed to retrieve Content Pool document id';
 	}
 }

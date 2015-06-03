@@ -4,9 +4,9 @@ require_once 'ContentPoolTestBase.php';
 
 class ContentPoolTest extends ContentPoolTestBase {
 	public function test_creation() {
-		$pool = new REEEPContentPool( new ContentPoolPusher() );
+		$pool = new ClimateContentPool( new ContentPoolPusher() );
 
-		$this->assertThat( $pool, $this->isInstanceOf( 'REEEPContentPool' ) );
+		$this->assertThat( $pool, $this->isInstanceOf( 'ClimateContentPool' ) );
 	}
 
 	public function test_meta_box_created_for_post() {

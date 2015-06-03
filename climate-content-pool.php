@@ -8,7 +8,7 @@ Author: Aptivate
 
 require_once dirname( __FILE__ ) . '/pusher.php';
 
-class REEEPContentPool {
+class ClimateContentPool {
 
 	private $pusher;
 
@@ -24,7 +24,7 @@ class REEEPContentPool {
 			'REEEP Content Pool',
 			'manage_options',
 			'reeep-content-pool',
-			array( 'REEEPContentPool', 'add_options_page_callback' ));
+			array( 'ClimateContentPool', 'add_options_page_callback' ));
 
 	}
 
@@ -188,7 +188,7 @@ class REEEPContentPool {
 	}
 }
 
-$content_pool = new REEEPContentPool( new ContentPoolPusher() );
+$content_pool = new ClimateContentPool( new ContentPoolPusher() );
 
 add_action( 'save_post', array( $content_pool, 'trigger_content_pool_push' ), 10, 3 );
 

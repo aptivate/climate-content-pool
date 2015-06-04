@@ -14,7 +14,7 @@ class PusherTest extends ContentPoolTestBase {
 
 		$pusher->push( $post );
 
-		$this->check_api_field(
+		$this->check_api_request_field(
 			'title',
 			$post->post_title );
 	}
@@ -28,7 +28,7 @@ class PusherTest extends ContentPoolTestBase {
 
 		$pusher->push( $post );
 
-		$this->check_api_field(
+		$this->check_api_request_field(
 			'text',
 			$post->post_content );
 	}
@@ -40,7 +40,7 @@ class PusherTest extends ContentPoolTestBase {
 
 		$pusher->push( $post );
 
-		$this->check_api_field(
+		$this->check_api_request_field(
 			'locale',
 			'en' );
 	}
@@ -56,7 +56,7 @@ class PusherTest extends ContentPoolTestBase {
 
 		$pusher->push( $post );
 
-		$this->check_api_field(
+		$this->check_api_request_field(
 			'locale',
 			'es' );
 	}
@@ -71,7 +71,7 @@ class PusherTest extends ContentPoolTestBase {
 		$post = $this->get_new_post();
 		$pusher->push( $post );
 
-		$this->check_api_field(
+		$this->check_api_request_field(
 			'internal',
 			false );
 	}
@@ -86,7 +86,7 @@ class PusherTest extends ContentPoolTestBase {
 		$post = $this->get_new_post();
 		$pusher->push( $post );
 
-		$this->check_api_field(
+		$this->check_api_request_field(
 			'internal',
 			true );
 	}
@@ -102,7 +102,7 @@ class PusherTest extends ContentPoolTestBase {
 		$post = $this->get_new_post();
 		$pusher->push( $post );
 
-		$this->check_api_field(
+		$this->check_api_request_field(
 			'documentUrl',
 			$url );
 	}
@@ -120,7 +120,7 @@ class PusherTest extends ContentPoolTestBase {
 
 		$pusher->push( $post );
 
-		$this->check_api_field(
+		$this->check_api_request_field(
 			'text',
 			'A NEW WORLD BANK REPORT LAYS OUT THREE STEPS FOR A SMOOTH TRANSITION TO A ZERO-CARBON FUTURE.' );
 	}
@@ -264,7 +264,7 @@ class PusherTest extends ContentPoolTestBase {
 		$post = $this->get_new_post();
 		$pusher->push( $post );
 
-		$this->check_api_field(
+		$this->check_api_request_field(
 			'token',
 			$token );
 	}
@@ -280,7 +280,7 @@ class PusherTest extends ContentPoolTestBase {
 		) );
 		$pusher->push( $post );
 
-		$this->check_api_field(
+		$this->check_api_request_field(
 			'date',
 			'2010-10-04T12:14:32+0000' );
 
@@ -290,7 +290,7 @@ class PusherTest extends ContentPoolTestBase {
 			$this->equalTo( 123456 ));
 	}
 
-	private function check_api_field( $name, $expected_value ) {
+	private function check_api_request_field( $name, $expected_value ) {
 		global $_CONTENT_POOL_MOCK_POST;
 
 		$actual_value = $_CONTENT_POOL_MOCK_POST[ $name ];

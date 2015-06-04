@@ -136,7 +136,17 @@ class PusherTest extends ContentPoolTestBase {
 
 		$error = $pusher->push( $post );
 
-		$this->assertThat( $error, $this->equalTo( 'An error occurred<br />A very serious error' ) );
+		$messages = $error->get_error_messages();
+
+		$this->assertThat(
+			$messages,
+			$this->equalTo(
+				array(
+					'An error occurred',
+					'A very serious error',
+				)
+			)
+		);
 	}
 
 	public function test_response_error_handled() {
@@ -153,7 +163,7 @@ class PusherTest extends ContentPoolTestBase {
 
 		$this->assertThat(
 			$pusher->push( $post ),
-			$this->equalTo( 'An error occurred<br />A very serious error' ) );
+			$this->equalTo( $error ) );
 	}
 
 	public function test_error_handled_for_non_200_status_code() {
@@ -169,9 +179,14 @@ class PusherTest extends ContentPoolTestBase {
 			)
 		);
 
+		$expected_error = new WP_Error(
+			'apierror',
+			'Invalid API Key'
+		);
+
 		$this->assertThat(
 			$pusher->push( $post ),
-			$this->equalTo( 'Invalid API Key' ) );
+			$this->equalTo( $expected_error ) );
 	}
 
 	public function test_invalid_document_id_handled() {
@@ -187,9 +202,14 @@ class PusherTest extends ContentPoolTestBase {
 			)
 		);
 
+		$expected_error = new WP_Error(
+			'noid',
+			'Failed to retrieve Content Pool document id'
+		);
+
 		$this->assertThat(
 			$pusher->push( $post ),
-			$this->equalTo( 'Failed to retrieve Content Pool document id' ) );
+			$this->equalTo( $expected_error ) );
 	}
 
 	public function test_successful_push() {
@@ -207,7 +227,7 @@ class PusherTest extends ContentPoolTestBase {
 
 		$this->assertThat(
 			$pusher->push( $post ),
-			$this->identicalTo( false ) );
+			$this->identicalTo( true ) );
 	}
 
 	public function return_error() {

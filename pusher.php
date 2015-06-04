@@ -1,5 +1,12 @@
 <?php
 class ContentPoolPusher {
+	/**
+	 * Push post content to the reegle Content Pool
+	 *
+	 * @param post
+	 *
+	 * @return true for success or WP_Error
+	 */
 	public function push( $post ) {
 		$title = $post->post_title;
 		$content = $post->post_content;
@@ -10,7 +17,7 @@ class ContentPoolPusher {
 			$post );
 
 		if ( is_wp_error( $content ) ) {
-			return implode( '<br />', $content->get_error_messages() );
+			return $content;
 		}
 
 		/* http://api.reegle.info/documentation - Content Pool Push tab*/
@@ -36,11 +43,12 @@ class ContentPoolPusher {
 		$response = wp_remote_post( $url, array( 'body' => $fields ) );
 
 		if ( is_wp_error( $response ) ) {
-			return implode( '<br />', $response->get_error_messages() );
+			return $response;
 		}
 
 		if ( $response['response']['code'] != 200 ) {
-			return strip_tags( wp_remote_retrieve_body( $response ) );
+			$message = strip_tags( wp_remote_retrieve_body( $response ) );
+			return new WP_Error( 'apierror', $message );
 		}
 
 		$document_id = wp_remote_retrieve_body( $response );
@@ -48,9 +56,11 @@ class ContentPoolPusher {
 			delete_post_meta( $post->ID, 'content_pool_id' );
 			add_post_meta( $post->ID, 'content_pool_id', $document_id );
 
-			return false;
+			return true;
 		}
 
-		return 'Failed to retrieve Content Pool document id';
+		$message = 'Failed to retrieve Content Pool document id';
+
+		return new WP_Error( 'noid', $message );;
 	}
 }

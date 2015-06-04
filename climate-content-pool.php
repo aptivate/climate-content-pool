@@ -151,8 +151,10 @@ class ClimateContentPool {
 	}
 
 	private function get_message( $error ) {
-		if ( $error !== false ) {
-			return "<div class='error'>$error</div>";
+		if ( $error instanceof WP_Error ) {
+			$message = implode( '<br />', $error->get_error_messages() );
+
+			return "<div class='error'>$message</div>";
 		}
 
 		return "<div class='updated'>Post successfully sent to Content Pool</div>";

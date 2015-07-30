@@ -22,7 +22,7 @@ class ContentPoolTest extends ContentPoolTestBase {
 			$id, $this->equalTo( 'climate_content_pool' ) );
 
 		$this->assertThat(
-			$title, $this->equalTo( 'Climate Content Pool' ) );
+			$title, $this->equalTo( 'Climate Tagger Content Pool' ) );
 	}
 
 	public function test_meta_box_created_for_resource() {
@@ -43,7 +43,7 @@ class ContentPoolTest extends ContentPoolTestBase {
 			$id, $this->equalTo( 'climate_content_pool' ) );
 
 		$this->assertThat(
-			$title, $this->equalTo( 'Climate Content Pool' ) );
+			$title, $this->equalTo( 'Climate Tagger Content Pool' ) );
 	}
 
 	public function test_meta_box_not_created_when_filtered() {

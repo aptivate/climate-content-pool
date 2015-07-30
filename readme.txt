@@ -1,19 +1,30 @@
 === Climate Content Pool ===
 Contributors: Aptivate
-Tags: reegle, content pool, api, reeep
+Tags: climate tagger, content pool, api
 Requires at least: 3.7
 Tested up to: 4.2.2
 Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Climate Content Pool is a plugin that pushes WordPress posts to the reegle Content Pool
+Climate Content Pool is a plugin that uploads WordPress posts to the
+Climate Tagger Content Pool
 
 == Description ==
 
-The Climate Content Pool plugin uses the [reegle Content Pool Push
-API](http://api.reegle.info/documentation/) to add content to the Reegle
-Content Pool.
+The Climate Tagger Content Pool Plugin for WordPress is a simple, FREE and
+easy-to-use way to upload your posts to the “Content Pool” of the well-known
+[Climate Tagger API](api.climatetagger.net). The API has been
+helping knowledge-driven web sites better catalogue, categorize, contextualize
+and connect their data with that from the broader climate knowledge community
+since 2011. Through its “Content Pool” Climate Tagger allows organizations to
+easily connect their data and information resources with other Climate Tagger
+users. By uploading your posts to the “Content Pool” of the Climate Tagger, you
+will make your content available to a large audience of users looking for
+climate-related information.
+
+After installation, a tick-box will appear on the screen where you add or edit
+your posts, which will allow you to send the post content to the Content Pool.
 
 [Follow this project on Github](https://github.com/aptivate/climate-content-pool)
 
@@ -22,14 +33,19 @@ Content Pool.
 
 1. Upload the plugin to the `wp-content/plugins/` directory.
 2. Activate it through the **Plugins** menu in WordPress.
-3. [Register with reegle for your API key](http://api.reegle.info/register)
+3. Register at [http://api.climatetagger.net/register](http://api.climatetagger.net/register) to get your FREE API token (or use your exiting one)
 4. Enable the plugin and enter the API key (**Settings** -> **Climate Content Pool**)
-5. A tick-box should now appear in the admin interface to send the post content to the pool when it is updated
+5. A tick-box will appear on the screen where you add or edit
+your posts, which will allow you to send the post content to the Content Pool.
+6. If you wish to send the content of pages as well as posts to the Content Pool, add `page` to the comma-separated list of **Post types** on the **Settings** page
 
 == Changelog ==
 
-= 1.0.0 =
+= 1.0.1 =
+* Documentation updates
+* Replaced references to reegle API with Climate Tagger
 
+= 1.0.0 =
 * First version
 
 

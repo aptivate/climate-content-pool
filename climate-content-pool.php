@@ -2,7 +2,7 @@
 /*
 Plugin Name: Climate Content Pool
 Description: Pushes posts into the Climate Tagger Content Pool
-Version: 1.0.1
+Version: 1.0.2
 Author: Aptivate
 */
 

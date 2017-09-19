@@ -19,7 +19,6 @@ class PostTest extends ContentPoolTestBase {
 			'post_content' => "A new World Bank report lays out three steps for a smooth transition to a zero-carbon future. Through data, examples and policy advice, it aims to help countries makes the shift. It tells us that to prevent temperatures from rising more than 2 degrees Celsius, the world will need to transform it's energy uses and electricity from clean energy sources will play an important role.",
 			'post_type' => 'post',
 		);
-
 	}
 
 	public function test_metadata_for_successful_push() {

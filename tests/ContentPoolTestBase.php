@@ -1,6 +1,27 @@
 <?php
 abstract class ContentPoolTestBase extends WP_UnitTestCase
 {
+	public function setUp() {
+		parent::setUp();
+
+		/* backupGlobals="true" no longer works with WP-CLI so we have to reset them
+		 * all here
+		 */
+
+		global $_CONTENT_POOL_MOCK_OPTIONS;
+		$_CONTENT_POOL_MOCK_OPTIONS = array();
+
+		global $_CONTENT_POOL_MOCK_RESPONSE;
+		$_CONTENT_POOL_MOCK_RESPONSE = array(
+			'response' => array(
+				'code' => '200',
+			),
+		);
+
+		global $wp_meta_boxes;
+		$wp_meta_boxes = array();
+	}
+
 	protected function get_html_element_from_output( $output, $path )
 	{
 		$elements = $this->get_html_elements_from_output( $output, $path );

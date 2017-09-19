@@ -2,8 +2,8 @@
 Contributors: Aptivate
 Tags: climate tagger, content pool, api
 Requires at least: 3.7
-Tested up to: 4.2.2
-Stable tag: 1.0.1
+Tested up to: 4.8.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -40,6 +40,9 @@ your posts, which will allow you to send the post content to the Content Pool.
 6. If you wish to send the content of pages as well as posts to the Content Pool, add `page` to the comma-separated list of **Post types** on the **Settings** page
 
 == Changelog ==
+
+= 1.0.2 =
+* Test fixes only - no code changes
 
 = 1.0.1 =
 * Documentation updates
